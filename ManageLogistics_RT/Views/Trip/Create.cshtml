@@ -1,0 +1,47 @@
+﻿@using ManageLogistics_RT.ViewModels.TripViewModel;
+@model CreateTripViewModel;
+
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<p>Создание расписания</p>
+
+
+<form method="post" asp-action="Create" enctype="multipart/form-data">
+   
+    @if (Model.MessageError != null)
+    {
+        <div class="py-2 alert-danger">
+            <span><b></b> - @Model.MessageError</span>
+        </div>
+    }
+
+    <div class="mb-3">
+        <label asp-for="SelectedDriver" class="form-label">Водитель</label>
+        <select asp-for="SelectedDriver" asp-items="Model.Drivers" class="form-control">
+        </select>
+        <span asp-validation-for="SelectedDriver" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SelectedRoute" class="form-label">Маршрут</label>
+        <select asp-for="SelectedRoute" asp-items="Model.Routes" class="form-control">
+        </select>
+        <span asp-validation-for="SelectedRoute" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SelectedBus" class="form-label">Автобус</label>
+        <select asp-for="SelectedBus" asp-items="Model.Buses" class="form-control">
+        </select>
+        <span asp-validation-for="SelectedBus" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TimeStart" class="form-label">Начало</label>
+        <input asp-for="TimeStart" class="form-control" placeholder="Введите дату начала">
+        <span asp-validation-for="TimeStart" class="text-danger"></span>
+    </div>
+     
+    <div class="mb-3 form-check">
+    </div>
+    <button type="submit" class="btn btn-primary">Создать</button>
+</form>

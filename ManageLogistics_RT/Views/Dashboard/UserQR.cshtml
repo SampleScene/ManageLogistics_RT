@@ -1,0 +1,19 @@
+﻿@using QRCoder;
+@using ManageLogistics_RT.ViewModels;
+
+@model  GenerateQRCodeViewModel;
+
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+    string QRCodeImageUrl = Model != null ? Model.QRCodeImageUrl : "";
+}
+
+<div>
+    @if (QRCodeImageUrl != "")
+    {
+        <div class="" style="margin-right:auto; margin-left:auto; width:200px; height:200px;">
+            <img src="@QRCodeImageUrl" class="img-fluid mb-3" width="200" height="200" style="margin-right:auto; margin-left:auto" />
+            <a href="@QRCodeImageUrl" class="btn btn-primary w-100" download="QRCode.png"></a>
+        </div>
+    }
+</div>

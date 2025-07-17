@@ -1,0 +1,45 @@
+﻿@using ManageLogistics_RT.Data.Enum
+@using ManageLogistics_RT.ViewModels;
+@model EditPriceViewModel;
+
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" value="AddressId" id="AddressId" />
+    <input type="hidden" value="TerminalId" id="TerminalId" />
+    
+    <div class="form-group">
+        <label asp-for="Title">Название</label>
+        <input asp-for="Title" class="form-control" placeholder="Введите название">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Type">Price Type</label>
+        <select asp-for="Type" asp-items="@Html.GetEnumSelectList<TypePrice>()" class="form-control">
+            <option selected="selected" value="">--Выбрать--</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Fare">Стоимость</label>
+        <input asp-for="Fare" class="form-control" placeholder="Введите стоимость">
+        <span asp-validation-for="Fare" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Time">Время</label>
+        <input asp-for="Time" class="form-control" placeholder="Введите время">
+        <span asp-validation-for="Time" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Number">Number</label>
+        <input asp-for="Number" class="form-control" placeholder="Введите количество">
+        <span asp-validation-for="Number" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Изменить</button>
+</form>

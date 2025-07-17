@@ -1,0 +1,38 @@
+﻿@model Employee;
+
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class=" px-3 pt-4" style="max-width: 600px;">
+
+    <form method="post" asp-action="EditEmployee" enctype="multipart/form-data">
+        <input type="hidden" id="Id" name="EmployeeId" asp-for="EmployeeId"/>
+        <input type="hidden" id="Id" name="TerminalId" asp-for="TerminalId" />
+
+        <div class="form-group mb-2">
+            <label asp-for="FirstName">Фамилия</label>
+            <input asp-for="FirstName" class="form-control" placeholder="Фамилия" >
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-2">
+            <label asp-for="LastName">Имя</label>
+            <input asp-for="LastName" class="form-control" placeholder="Имя" >
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-2">
+            <label asp-for="SerisesAndNumber">Серия и номер паспорта</label>
+            <input asp-for="SerisesAndNumber" class="form-control" placeholder="" >
+            <span asp-validation-for="SerisesAndNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-2">
+            <label asp-for="IssuedBy">Выдан</label>
+            <input asp-for="IssuedBy" class="form-control" placeholder="" >
+            <span asp-validation-for="IssuedBy" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 form-check">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
