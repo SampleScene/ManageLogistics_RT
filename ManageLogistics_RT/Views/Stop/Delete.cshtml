@@ -1,9 +1,0 @@
-﻿@model Stop;
-
-
-<form method="post" asp-action="Delete">
-    <h3>Вы уверены что хотите удалить запись?</h3>
-    <input type="hidden" asp-for="Id" />
-    <input type="submit" value="Удалить" class=" btn btn-danger mt-3"></input>
-    <a class="nav-link text-dark" asp-area="" asp-controller="Stop" asp-action="Index" class=" btn btn-success mt-3">Вернуться</a>
-</form>
