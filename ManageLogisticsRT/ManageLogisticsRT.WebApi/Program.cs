@@ -1,12 +1,37 @@
-using ManageLogisticsRT.Data.Extentions;
+using ManageLogisticsRT.Data;
+using ManageLogisticsRT.WebApi.Extentions;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace ManageLogisticsRT.WebApi;
 
-builder.Services.AddDataContext(builder.Configuration);
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var app = CreateHostBuilder(args).Build();
+        CheckDbConection(app);
+        app.Run();  
+    }
+    
+    public static WebApplicationBuilder CreateHostBuilder(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+        builder.Services.SetupApplicationServices(builder.Configuration);
+        return builder;
+    }
 
-var app = builder.Build();
-
-
-app.MapGet("/", () => "Hello World!");
-
-app.Run();
+    public static void CheckDbConection(WebApplication app)
+    {
+        using var scope = app.Services.CreateScope();
+        var log = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+        try
+        {
+            dbContext.Database.CanConnect();
+            log.LogInformation($"Db conect success");
+        }
+        catch (Exception ex)
+        {
+            log.LogError($"Db conect Failer: {ex.Message}");
+        }
+    }
+} 

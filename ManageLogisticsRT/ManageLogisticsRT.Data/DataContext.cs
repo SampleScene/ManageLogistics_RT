@@ -9,7 +9,6 @@ public class DataContext : IdentityDbContext<User>
 {
     public DbSet<Department> Departments { get; set; }
     
-
     public DataContext(DbContextOptions<DataContext> options) : base(options) {}
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,5 +28,4 @@ public class DataContext : IdentityDbContext<User>
             entity.Property(t => t.Title);
         });
     }
-    
 }
