@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ManageLogisticsRT.Data.Extentions;
-
+jhhhhhh
 public static class StartupExtentions
 {
    public static IServiceCollection AddDataContext(this IServiceCollection services, IConfiguration configuration)
